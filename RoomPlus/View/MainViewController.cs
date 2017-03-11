@@ -12,15 +12,28 @@ namespace RoomPlus
         {
         }
 
+		public override void ViewWillAppear(bool animated)
+		{
+			base.ViewWillAppear(animated);
+
+
+
+		}
+
 		public override void ViewDidLoad()
 		{ 
 			base.ViewDidLoad();
+
 
 			//Object initillizer
 			this._jManager = JsonManager.Instance;
 
 			//0. Load the System Vaalues
 			SystemValue.LoadDefaultValue();
+
+
+			///
+			this.ChangeBackgroundColor();
 		}
 
 		#region Logic for the Main Page Left Scroll View 
