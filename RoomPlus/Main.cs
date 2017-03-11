@@ -1,6 +1,6 @@
 ﻿using UIKit;
 
-namespace RoomPlus
+namespace com.atombooster.roomplus
 {
 	public class Application
 	{

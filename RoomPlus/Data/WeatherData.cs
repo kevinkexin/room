@@ -1,5 +1,5 @@
 ﻿using System;
-namespace RoomPlus
+namespace com.atombooster.roomplus
 {
 	/// <summary>
 	/// Weather data contains all the weather data information to display on the main page

@@ -2,7 +2,7 @@ using Foundation;
 using System;
 using UIKit;
 
-namespace RoomPlus
+namespace com.atombooster.roomplus
 {
 	
     public partial class MainViewController : UIViewController
@@ -24,16 +24,27 @@ namespace RoomPlus
 		{ 
 			base.ViewDidLoad();
 
+			try
+			{
+				
+				var activityIndicatorView = new Xamarin.iOS.DGActivityIndicatorViewBinding.DGActivityIndicatorView(Xamarin.iOS.DGActivityIndicatorViewBinding.DGActivityIndicatorAnimationType.BallScale, UIColor.White);
+				this.View.AddSubview(activityIndicatorView);
 
-			//Object initillizer
-			this._jManager = JsonManager.Instance;
+				activityIndicatorView.StartAnimating();
 
-			//0. Load the System Vaalues
-			SystemValue.LoadDefaultValue();
+				//Object initillizer
+				this._jManager = JsonManager.Instance;
 
+				//0. Load the System Vaalues
+				SystemValue.LoadDefaultValue();
 
-			///
-			this.ChangeBackgroundColor();
+				///
+				this.ChangeBackgroundColor();
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.ToString());
+			}
 		}
 
 		#region Logic for the Main Page Left Scroll View 

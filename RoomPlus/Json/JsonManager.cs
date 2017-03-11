@@ -4,7 +4,7 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace RoomPlus
+namespace com.atombooster.roomplus
 {
 	public class JsonManager
 	{

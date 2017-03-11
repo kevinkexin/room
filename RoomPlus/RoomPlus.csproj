@@ -6,7 +6,7 @@
     <ProjectGuid>{C538EF79-ED69-4038-B1BB-E9BEE5638D37}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
-    <RootNamespace>RoomPlus</RootNamespace>
+    <RootNamespace>com.atombooster.roomplus</RootNamespace>
     <AssemblyName>RoomPlus</AssemblyName>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
   </PropertyGroup>
@@ -29,6 +29,7 @@
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <MtouchTlsProvider>Default</MtouchTlsProvider>
     <DeviceSpecificBuild>false</DeviceSpecificBuild>
+<AssemblyName>com.atombooster.roomplus</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>pdbonly</DebugType>
@@ -61,6 +62,7 @@
     <MtouchArch>x86_64</MtouchArch>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <MtouchTlsProvider>Default</MtouchTlsProvider>
+<AssemblyName>com.atombooster.roomplus</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -92,6 +94,9 @@
 	<Reference Include="System.Net.Http" />
 	<Reference Include="Newtonsoft.Json">
 	  <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+	</Reference>
+	<Reference Include="Xamarin.iOS.DGActivityIndicatorViewBinding, Version=1.0.6239.1939, Culture=neutral, processorArchitecture=MSIL">
+	  <HintPath>..\packages\Xamarin.iOS.DGActivityIndicatorView.1.0.0\lib\Xamarin.iOS10\Xamarin.iOS.DGActivityIndicatorViewBinding.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>

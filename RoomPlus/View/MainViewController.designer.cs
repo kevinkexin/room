@@ -9,7 +9,7 @@ using System;
 using System.CodeDom.Compiler;
 using UIKit;
 
-namespace RoomPlus
+namespace com.atombooster.roomplus
 {
     [Register ("MainViewController")]
     partial class MainViewController

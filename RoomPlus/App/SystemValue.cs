@@ -1,7 +1,7 @@
 ﻿using System;
 using Foundation;
 
-namespace RoomPlus
+namespace com.atombooster.roomplus
 {
 	public class SystemValue
 	{

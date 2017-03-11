@@ -3,7 +3,7 @@ using System.IO;
 using System.Net;
 using UIKit;
 
-namespace RoomPlus
+namespace com.atombooster.roomplus
 {
 	public class AysncFileDownloader
 	{

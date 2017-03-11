@@ -1,5 +1,5 @@
 ﻿using System;
-namespace RoomPlus
+namespace com.atombooster.roomplus
 {
 	public enum RequestName
 	{

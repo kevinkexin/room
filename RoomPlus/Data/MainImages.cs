@@ -1,5 +1,5 @@
 ﻿using System;
-namespace RoomPlus
+namespace com.atombooster.roomplus
 {
 	/// <summary>
 	/// Main images used to display on the main screen.
