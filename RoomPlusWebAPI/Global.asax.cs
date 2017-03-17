@@ -13,5 +13,10 @@ namespace RoomPlusWebAPI
 			GlobalConfiguration.Configure(WebApiConfig.Register);
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 		}
+
+		protected void Application_PostAuthorizeRequest()
+		{
+			System.Web.HttpContext.Current.SetSessionStateBehavior(System.Web.SessionState.SessionStateBehavior.Required);
+		}
 	}
 }

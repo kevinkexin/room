@@ -6,7 +6,24 @@ namespace com.atombooster.roomplus
 	public class SystemValue
 	{
 		//Used for the url that the json service seated
-		public static string PublicURL { get; set; }
+		private static string _publicURL = string.Empty;
+
+		public static string PublicURL { 
+			get
+			{
+				if (!_publicURL.EndsWith("/", StringComparison.InvariantCultureIgnoreCase))
+					_publicURL += "/";
+
+				if (!_publicURL.StartsWith("http://", StringComparison.InvariantCultureIgnoreCase))
+					_publicURL = "http://" + _publicURL;
+
+				return _publicURL;
+			}
+			set
+			{
+				_publicURL = value;
+			}
+		}
 		//client id for ceretain device
 		public static string ClientId { get; set; }
 		//secredcty key for the this client
@@ -23,17 +40,18 @@ namespace com.atombooster.roomplus
 				plist = new NSUserDefaults("group.com.atombooster.roomplus", NSUserDefaultsType.SuiteName);
 
 			PublicURL = plist.StringForKey("PublicURL");
-			ClientId = plist.StringForKey("ClientId");
-			SecrectKey = UIKit.UIDevice.CurrentDevice.IdentifierForVendor.ToString(); //plist.StringForKey("SecrectKey");
+			SecrectKey = plist.StringForKey("SecrectKey");
+			ClientId = UIKit.UIDevice.CurrentDevice.IdentifierForVendor.ToString(); //plist.StringForKey("SecrectKey");
 
 
 			#region Default Value for testing purpose only
-			if (string.IsNullOrWhiteSpace(PublicURL))
-				PublicURL = "127.0.01";
+			if (EnvironmentDetector.InSimulator())
+			{
+				PublicURL = "127.0.0.1:8080";
+				SecrectKey = "1234567890";
+				ClientId = "ABCDEFGHIJKLMN";
+			}
 
-			if (string.IsNullOrWhiteSpace(ClientId))
-				ClientId = "325684";
-			
 			#endregion
 
 		}
@@ -48,7 +66,7 @@ namespace com.atombooster.roomplus
 
 			//Set the value
 			plist.SetString(PublicURL, "PublicURL");
-			plist.SetString(ClientId, "ClientId");
+			plist.SetString(ClientId, "SecrectKey");
 			//plist.SetString(SecrectKey, "SecrectKey");
 
 			//Save the data

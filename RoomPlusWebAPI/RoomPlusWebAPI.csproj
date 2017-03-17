@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>RoomPlusWebAPI</RootNamespace>
     <AssemblyName>RoomPlusWebAPI</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -101,6 +101,8 @@
     <Folder Include="Controllers\" />
     <Folder Include="App_Code\" />
     <Folder Include="App_Code\Data\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Resources\MainImages\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
@@ -120,6 +122,8 @@
     <Compile Include="App_Code\DataAccess.cs" />
     <Compile Include="App_Code\Data\TransactionRequest.cs" />
     <Compile Include="App_Code\PublicEnum.cs" />
+    <Compile Include="Controllers\MainImagesController.cs" />
+    <Compile Include="Models\MainImages.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />

@@ -14,29 +14,23 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="5" translatesAutoresizingMaskIntoConstraints="NO" pagingEnabled="YES" showsVerticalScrollIndicator="NO">
-                                <rect key="frame" x="32" y="86" width="425" height="618"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="5" translatesAutoresizingMaskIntoConstraints="NO" pagingEnabled="YES" showsVerticalScrollIndicator="NO" fixedFrame="YES" showsHorizontalScrollIndicator="NO">
+                                <rect key="frame" x="32" y="86" width="425" height="662"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews/>
                             </scrollView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="8" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="35" y="717" width="419" height="37"/>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="8" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="36" y="705" width="419" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </pageControl>
                         </subviews>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="5"/>
-                                <exclude reference="8"/>
-                            </mask>
-                        </variation>
                         <variation key="heightClass=regular-widthClass=regular">
                             <mask key="subviews">
                                 <include reference="5"/>
-                                <include reference="8"/>
                             </mask>
                         </variation>
                     </view>

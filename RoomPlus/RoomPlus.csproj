@@ -23,13 +23,14 @@
     <MtouchFastDev>true</MtouchFastDev>
     <MtouchUseSGen>true</MtouchUseSGen>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
-    <IOSDebuggerPort>10000</IOSDebuggerPort>
+    <IOSDebuggerPort>10001</IOSDebuggerPort>
     <MtouchLink>None</MtouchLink>
     <MtouchArch>x86_64</MtouchArch>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <MtouchTlsProvider>Default</MtouchTlsProvider>
     <DeviceSpecificBuild>false</DeviceSpecificBuild>
 <AssemblyName>com.atombooster.roomplus</AssemblyName>
+<IOSDebugOverWiFi>false</IOSDebugOverWiFi>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>pdbonly</DebugType>
@@ -139,6 +140,8 @@
     <Compile Include="Data\PublicEnum.cs" />
     <Compile Include="Data\WeatherData.cs" />
     <Compile Include="Json\JsonManager.cs" />
+    <Compile Include="App\FileDownloader.cs" />
+    <Compile Include="App\EnvironmentDetector.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

@@ -11,11 +11,11 @@ namespace com.atombooster.roomplus
 		private static JsonManager _jsonManger;
 
 		private static readonly object _singletonLock = new object();
-		private System.Threading.Thread _executeTaskThread;
-		private System.Threading.AutoResetEvent _autoCondition = new System.Threading.AutoResetEvent(false);
+		//private System.Threading.Thread _executeTaskThread;
+		//private System.Threading.AutoResetEvent _autoCondition = new System.Threading.AutoResetEvent(false);
 
 		#region Data 
-		private MainImages[] _MainPageImages { get; set; }
+		private MainImages[] _MainImages { get; set; }
 		private WeatherData[] _WeatherDate { get; set; }
 		#endregion
 
@@ -49,10 +49,10 @@ namespace com.atombooster.roomplus
 		public MainImages[] GetMainImages()
 		{
 			this.requestName = RequestName.RequestMainImages;
-			url = SystemValue.PublicURL + "api/MainPageImages";
+			url = SystemValue.PublicURL + "api/MainImages";
 
 			this.ExcuteRequest(null);
-			return this._MainPageImages;
+			return this._MainImages;
 		}
 
 		/// <summary>
@@ -72,7 +72,7 @@ namespace com.atombooster.roomplus
 					switch (requestName)
 					{
 						case RequestName.RequestMainImages:
-							this._MainPageImages = (MainImages[])obj;
+							this._MainImages = (MainImages[])obj;
 							break;
 
 						case RequestName.RequestWeather:
@@ -115,6 +115,7 @@ namespace com.atombooster.roomplus
 				HttpClient httpClient = new HttpClient();
 				//httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
+				//Username:Password
 				//if (!string.IsNullOrEmpty(SessionId) && this.requestName != RequestName.KeepAlive)
 				httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(
 													   "Basic", SystemValue.ClientId + ":" + SystemValue.SecrectKey); //testuser:Pass1word

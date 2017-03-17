@@ -17,7 +17,7 @@ namespace WebApiBasicAuth.Filters
 
             //User Name is ClientID
             //Password is secretKey
-            if (!ValidateClientId(userName) || !ValideSecrectKey(password))
+            if (!ValideDevice(userName, password))
             {
                 // No user with userName/password exists.
                 return null;
@@ -38,74 +38,31 @@ namespace WebApiBasicAuth.Filters
             return principal;
         }
 
-        public bool ValideSecrectKey(string Key)
-        {            
-            try
-            {
-                if (string.IsNullOrEmpty(ConstantValues.SecrectKey))
-                {
-                    using (DataAccess da = new DataAccess())
-                    {
-                        System.Data.DataTable dt = da.GetTerminalKey(Key);
+		/// <summary>
+		/// Valides the device identifier.
+		/// </summary>
+		/// <returns><c>true</c>, if device identifier was valided, <c>false</c> otherwise.</returns>
+		/// <param name="DeviceId">Device identifier.</param>
+		/// <param name="SecurityKey">Security key.</param>
+		public bool ValideDevice(string DeviceId, string SecurityKey)
+		{
+			bool blnValid = false;
+			try
+			{
+				using (DataAccess da = new DataAccess())
+				{
+					System.Data.DataTable dt = da.GetTerminalKey(DeviceId, SecurityKey);
 
-                        if (dt != null && dt.Rows.Count > 0)
-                        {
-                            string TerminalId = dt.Rows[0]["TerminalID"].ToString().ToUpper();
-                            string strPhrase = dt.Rows[0]["Phrase"].ToString();
-                            KEXIN.EncryptionUtility encryptor = new KEXIN.EncryptionUtility();
-                            encryptor.passPhrase = TerminalId.Substring(0, 1) +
-                                                   TerminalId.Substring(9, 1) +
-                                                   TerminalId.Substring(14, 1) +
-                                                   TerminalId.Substring(19, 1) +
-                                                   TerminalId.Substring(24, 1);
-                            if (strPhrase == encryptor.Encrypt(Key))
-                                ConstantValues.SecrectKey = Key;
-                        }//End of Each
-                    }//End of Using
-                }//End of if checking
-            }//End of Try
-            catch
-            {
-                ConstantValues.SecrectKey = null;
-            }
+					if (dt != null && dt.Rows.Count > 0)
+						blnValid = true;
+				}//End of Using
+			}//End of Try
+			catch
+			{
 
-            if (ConstantValues.SecrectKey == Key)
-                return true;
-            else
-                return false;
-        }
+			}
 
-        public bool ValidateClientId(string ClientId)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(ConstantValues.ClientId))
-                {
-                    //string TerminalId =   cn.Singsoft.FingerPrint.Value();
-                    string TerminalId = System.Configuration.ConfigurationManager.AppSettings["PrivateKey"];
-
-                    KEXIN.EncryptionUtility encryptor = new KEXIN.EncryptionUtility();
-                    TerminalId = encryptor.Decrypt(TerminalId);
-
-                    encryptor.passPhrase = TerminalId.Substring(0, 1) +
-                                            TerminalId.Substring(9, 1) +
-                                            TerminalId.Substring(14, 1) +
-                                            TerminalId.Substring(19, 1) +
-                                            TerminalId.Substring(24, 1);
-
-                    ConstantValues.ClientId = encryptor.Decrypt(System.Configuration.ConfigurationManager.AppSettings["ClientId"]);
-                }//End of if checking
-            }//End of Try
-            catch (System.Exception ex)
-            {
-                ConstantValues.ClientId = null;
-            }
-
-            if (ConstantValues.ClientId == ClientId)
-                return true;
-            else
-                return false;
-        }
+			return blnValid;
+		}
     }
-
 }

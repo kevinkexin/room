@@ -13,59 +13,30 @@ namespace RoomPlusWebAPI.App_Code
     {
         public Database _db = DatabaseFactory.CreateDatabase("DBConnectionString");
 
-        public DataTable GetMainImages()
+        public DataTable GetMainImages(int Id = 0)
         {
             try
             {
-                using (DbCommand dbc = _db.GetStoredProcCommand("ServiceImageQuery"))
+                using (DbCommand dbc = _db.GetStoredProcCommand("MainImagesQuery"))
                 {
-                    return _db.ExecuteDataSet(dbc).Tables[0];
+                    _db.AddInParameter(dbc, "@SID", DbType.Int16, Id);
+					return _db.ExecuteDataSet(dbc).Tables[0];
                 }
             }
-            catch
+			catch (Exception ex)
             {
+				Console.WriteLine(ex.ToString());
                 return null;
             }
         }
 
-        public DataTable GetMainPageImages(int Id = 0)
-        {
-            try
-            {
-                using (DbCommand dbc = _db.GetStoredProcCommand("MainPageImagesQuery"))
-                {
-                    _db.AddInParameter(dbc, "@SID", DbType.String, Id);
-                    return _db.ExecuteDataSet(dbc).Tables[0];
-                }
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
-        public DataTable GetVideoList(int Id = 0)
-        {
-            try
-            {
-                using (DbCommand dbc = _db.GetStoredProcCommand("VideoListQuery"))
-                {
-                    _db.AddInParameter(dbc, "@SID", DbType.String, Id);
-                    return _db.ExecuteDataSet(dbc).Tables[0];
-                }
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
-        public DataTable GetTerminalKey(string SecrectKey)
+        public DataTable GetTerminalKey(string DeviceId, string SecrectKey)
         {
             try
             {
                 using (DbCommand dbc = _db.GetStoredProcCommand("TerminalKeyQuery"))
                 {
+					_db.AddInParameter(dbc, "@DeviceId", DbType.String, DeviceId);
                     _db.AddInParameter(dbc, "@SecretKey", DbType.String, SecrectKey);
                     return _db.ExecuteDataSet(dbc).Tables[0];
                 }
@@ -75,26 +46,9 @@ namespace RoomPlusWebAPI.App_Code
                 return null;
             }
         }
+       
 
-        public DataTable GetHeaderLines(string Language = "en-us", int Id = 0)
-        {
-            try
-            {
-                using (DbCommand dbc = _db.GetStoredProcCommand("HeaderLinesQuery"))
-                {
-                    _db.AddInParameter(dbc, "@SID", DbType.Int32, Id);
-                    _db.AddInParameter(dbc, "@Language", DbType.String, Language);
-
-                    return _db.ExecuteDataSet(dbc).Tables[0];
-                }
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
-        public DataTable GetWeatherDate(int CityId = 0)
+        public DataTable GetWeatherData(int CityId = 0)
         {
             try
             {
