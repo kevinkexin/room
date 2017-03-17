@@ -27,6 +27,10 @@
                                 <rect key="frame" x="36" y="705" width="419" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </pageControl>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="48" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" showsVerticalScrollIndicator="NO" autoresizesSubviews="NO" pagingEnabled="YES">
+                                <rect key="frame" x="472" y="86" width="532" height="149"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </scrollView>
                         </subviews>
                         <variation key="heightClass=regular-widthClass=regular">
                             <mask key="subviews">
@@ -37,6 +41,7 @@
                     <connections>
                         <outlet property="swMainAdv" destination="5" id="name-outlet-5"/>
                         <outlet property="pcMainAdv" destination="8" id="name-outlet-8"/>
+                        <outlet property="scWeather" destination="48" id="name-outlet-48"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

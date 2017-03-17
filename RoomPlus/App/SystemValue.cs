@@ -29,6 +29,11 @@ namespace com.atombooster.roomplus
 		//secredcty key for the this client
 		public static string SecrectKey { get; set; }
 
+
+		public static nint AutoScrollInterval { get; set; }
+
+		public static bool AutoScrollMainImage { get; set; }
+
 		static NSUserDefaults plist;
 
 		/// <summary>
@@ -41,7 +46,11 @@ namespace com.atombooster.roomplus
 
 			PublicURL = plist.StringForKey("PublicURL");
 			SecrectKey = plist.StringForKey("SecrectKey");
+			AutoScrollInterval = plist.IntForKey("AutoScrollInterval");
+			AutoScrollMainImage = plist.BoolForKey("AutoScrollMainImage");
+
 			ClientId = UIKit.UIDevice.CurrentDevice.IdentifierForVendor.ToString(); //plist.StringForKey("SecrectKey");
+
 
 
 			#region Default Value for testing purpose only
@@ -50,6 +59,8 @@ namespace com.atombooster.roomplus
 				PublicURL = "127.0.0.1:8080";
 				SecrectKey = "1234567890";
 				ClientId = "ABCDEFGHIJKLMN";
+				AutoScrollInterval = 3;
+				AutoScrollMainImage = true;
 			}
 
 			#endregion
@@ -67,6 +78,9 @@ namespace com.atombooster.roomplus
 			//Set the value
 			plist.SetString(PublicURL, "PublicURL");
 			plist.SetString(ClientId, "SecrectKey");
+			plist.SetInt(AutoScrollInterval, "AutoScrollInterval");
+			plist.SetBool(AutoScrollMainImage, "AutoScrollMainImage");
+
 			//plist.SetString(SecrectKey, "SecrectKey");
 
 			//Save the data

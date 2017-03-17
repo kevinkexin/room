@@ -117,6 +117,7 @@
     <Folder Include="Json\" />
     <Folder Include="Assets.xcassets\Logo.imageset\" />
     <Folder Include="Assets.xcassets\Background.imageset\" />
+    <Folder Include="Custom\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Storyboard\LaunchScreen.storyboard" />
@@ -142,6 +143,7 @@
     <Compile Include="Json\JsonManager.cs" />
     <Compile Include="App\FileDownloader.cs" />
     <Compile Include="App\EnvironmentDetector.cs" />
+    <Compile Include="Custom\WeatherView.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

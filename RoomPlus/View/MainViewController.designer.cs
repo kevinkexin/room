@@ -20,6 +20,10 @@ namespace com.atombooster.roomplus
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIScrollView scWeather { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIScrollView swMainAdv { get; set; }
 
         void ReleaseDesignerOutlets ()
@@ -27,6 +31,11 @@ namespace com.atombooster.roomplus
             if (pcMainAdv != null) {
                 pcMainAdv.Dispose ();
                 pcMainAdv = null;
+            }
+
+            if (scWeather != null) {
+                scWeather.Dispose ();
+                scWeather = null;
             }
 
             if (swMainAdv != null) {
